@@ -43,7 +43,8 @@ Agent and skill templates live inside the `create-agent` and `create-skill` skil
 | [devops-engineer](agents/devops-engineer.md) | CI/CD pipelines, Docker, env config | sonnet | no | general |
 | [release-manager](agents/release-manager.md) | Release gates, SemVer bump, changelog, go/no-go | sonnet | edits changelog only | general |
 | [doc-writer](agents/doc-writer.md) | Keeps docs in sync with the code | sonnet | no | general |
-| [doc-reviewer](agents/doc-reviewer.md) | Reviews, fact-checks and audits docs against the code (review / verify / audit) | opus | yes | general |
+| [doc-reviewer](agents/doc-reviewer.md) | Reviews the docs doc-writer wrote or changed: accuracy against the code, completeness, writing | opus | yes | general |
+| [doc-auditor](agents/doc-auditor.md) | Whole-repo gap between the built product and its docs, both ways, with a coverage table | opus | yes | general |
 | [ts-developer](agents/ts-developer.md) | Builds the jktools package (core, CLI, CI) | sonnet | no | jktools |
 | [ts-reviewer](agents/ts-reviewer.md) | Reviews jktools TypeScript code | opus | yes | jktools |
 | [tool-author](agents/tool-author.md) | Writes jktools provider tool templates | sonnet | no | jktools |
@@ -55,8 +56,8 @@ Full life cycle (run by the `ship-feature` skill): `product-manager` → `projec
 | Skill | What it does | Scope |
 | --- | --- | --- |
 | [ship-feature](skills/ship-feature/SKILL.md) | Orchestrates the full life cycle with the agents above, with gates between stages | general |
-| [create-agent](skills/create-agent/SKILL.md) | Analyze → create → verify a new subagent, with bundled template and checklist; verifies with `doc-reviewer` | general |
-| [create-skill](skills/create-skill/SKILL.md) | Analyze → create → verify a new skill folder, with bundled template and checklist; verifies with `doc-reviewer` | general |
+| [create-agent](skills/create-agent/SKILL.md) | Analyze → create → verify a new subagent, with bundled template and checklist | general |
+| [create-skill](skills/create-skill/SKILL.md) | Analyze → create → verify a new skill folder, with bundled template and checklist | general |
 | [add-tool](skills/add-tool/SKILL.md) | Steps to add one provider tool to jktools (template, fixture, test, registry) | jktools |
 
 ### MCP servers

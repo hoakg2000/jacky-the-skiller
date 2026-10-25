@@ -1,6 +1,6 @@
 ---
 name: doc-writer
-description: Keeps the project documents in sync with the code (API contract, database doc, module docs, environment and setup docs). Use PROACTIVELY after a feature, endpoint, schema or env var change, or when the user asks to "document", "update docs", or write a module doc.
+description: Keeps the project documents in sync with the code (API contract, database doc, module docs, environment and setup docs). Use PROACTIVELY after a feature, endpoint, schema or env var change, or when the user asks to "document", "update docs", or write a module doc. Not for read-only doc gap audits (doc-auditor) or reviewing its own output (doc-reviewer).
 tools: Read, Grep, Glob, Edit, Write, Bash
 model: sonnet
 color: yellow

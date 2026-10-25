@@ -1,6 +1,6 @@
 ---
 name: create-agent
-description: Creates a new Claude Code subagent (agent.md) in three phases - analyze (overlap with existing agents, agent vs skill, tools, model), create (from the bundled template), verify (frontmatter checks plus a doc-reviewer pass against the bundled checklist). Use when the user asks to "create an agent", "add a subagent", "make an agent for X", or to rework an existing agent.md. Not for skills (create-skill).
+description: Creates a new Claude Code subagent (agent.md) in three phases - analyze (overlap with existing agents, agent vs skill, tools, model), create (from the bundled template), verify (frontmatter checks plus a fresh-context review against the bundled checklist). Use when the user asks to "create an agent", "add a subagent", "make an agent for X", or to rework an existing agent.md. Not for skills (create-skill).
 ---
 
 # Create an agent
@@ -31,9 +31,9 @@ Input: what the agent should do, and where it goes: this library's `agents/`, a 
    - frontmatter parses and `name` equals the file name (F1, F2);
    - only fields from F3 and real tool names (F4);
    - no template placeholder or comment left: run `Select-String -Path <file> -Pattern '<[a-z-]+>|<!--'` and check each match; name patterns the agent really uses (like `<kebab-name>.md`) may stay (B10).
-2. Run the `doc-reviewer` agent in review + verify mode: "Review `<file>` against the standard `<this skill folder>/checklist.md`, citing rule IDs. Verify that every agent, skill, path and command it names exists." If `doc-reviewer` is not installed, apply the checklist yourself, rule by rule.
+2. Fresh-context review: run the built-in `general-purpose` agent with "Read-only, do not edit files. Review `<file>` against the standard `<this skill folder>/checklist.md`, citing rule IDs, as `[Major|Minor|Nit] line: rule → problem → fix`. Verify that every agent, skill, path and command it names exists." If agents are not available, apply the checklist yourself, rule by rule.
 3. Fix every Major and Minor finding. Re-run step 2 once. If findings remain after 2 rounds, report them to the user.
 4. Optional smoke test: copy the file into a project's `.claude/agents/`, start a new session, check `/agents` lists it, and give it one small real task.
 
 ## Report
-File path, the design (name, model, tools, read-only), checklist result (rules passed / failed), doc-reviewer verdict and remaining findings, and whether the smoke test ran.
+File path, the design (name, model, tools, read-only), checklist result (rules passed / failed), review findings left, and whether the smoke test ran.

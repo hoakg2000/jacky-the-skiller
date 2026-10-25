@@ -1,6 +1,6 @@
 # Agent checklist
 
-The standard every `agent.md` must meet. `create-agent` builds against it and `doc-reviewer` checks against it. Cite rules by ID.
+The standard every `agent.md` must meet. `create-agent` builds against it and its verify phase checks against it. Cite rules by ID.
 
 ## Frontmatter
 - **F1** Valid YAML between `---` lines. Quote any value that contains `: `.

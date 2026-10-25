@@ -1,6 +1,6 @@
 ---
 name: create-skill
-description: Creates a new Claude Code skill folder (SKILL.md plus optional references, scripts, templates) in three phases - analyze (overlap with existing skills and agents, skill vs agent, triggers), create (from the bundled template), verify (structure checks plus a doc-reviewer pass against the bundled checklist). Use when the user asks to "create a skill", "add a skill", "turn this workflow into a skill", or to rework an existing SKILL.md. Not for subagents (create-agent).
+description: Creates a new Claude Code skill folder (SKILL.md plus optional references, scripts, templates) in three phases - analyze (overlap with existing skills and agents, skill vs agent, triggers), create (from the bundled template), verify (structure checks plus a fresh-context review against the bundled checklist). Use when the user asks to "create a skill", "add a skill", "turn this workflow into a skill", or to rework an existing SKILL.md. Not for subagents (create-agent).
 ---
 
 # Create a skill
@@ -31,9 +31,9 @@ Input: what the skill should do, and where it goes: this library's `skills/`, a 
    - frontmatter parses and `name` equals the folder name (F1, F2);
    - every file the body names exists in the folder (T1);
    - no template placeholder or comment left: run `Select-String -Path <folder>\*.md -Pattern '<[a-z-]+>|<!--'` and check each match; name patterns the skill really uses (like `<group>/<action>`) may stay (X3).
-2. Run the `doc-reviewer` agent in review + verify mode: "Review `<folder>/SKILL.md` against the standard `<this skill folder>/checklist.md`, citing rule IDs. Verify that every agent, skill, path, script and command it names exists." If `doc-reviewer` is not installed, apply the checklist yourself, rule by rule.
+2. Fresh-context review: run the built-in `general-purpose` agent with "Read-only, do not edit files. Review `<folder>/SKILL.md` against the standard `<this skill folder>/checklist.md`, citing rule IDs, as `[Major|Minor|Nit] line: rule → problem → fix`. Verify that every agent, skill, path, script and command it names exists." If agents are not available, apply the checklist yourself, rule by rule.
 3. Fix every Major and Minor finding. Re-run step 2 once. If findings remain after 2 rounds, report them to the user.
 4. Optional smoke test: copy the folder into a project's `.claude/skills/`, start a new session, type one of its trigger phrases, and check that the skill loads and its first phase runs.
 
 ## Report
-Folder path, the design (name, triggers, phases, helper agents), checklist result (rules passed / failed), doc-reviewer verdict and remaining findings, and whether the smoke test ran.
+Folder path, the design (name, triggers, phases, helper agents), checklist result (rules passed / failed), review findings left, and whether the smoke test ran.

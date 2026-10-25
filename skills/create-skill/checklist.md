@@ -1,6 +1,6 @@
 # Skill checklist
 
-The standard every `SKILL.md` must meet. `create-skill` builds against it and `doc-reviewer` checks against it. Cite rules by ID.
+The standard every `SKILL.md` must meet. `create-skill` builds against it and its verify phase checks against it. Cite rules by ID.
 
 ## Frontmatter
 - **F1** Valid YAML between `---` lines. Quote any value that contains `: `.
