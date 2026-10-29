@@ -38,6 +38,7 @@ Agent and skill templates live inside the `create-agent` and `create-skill` skil
 | [test-engineer](agents/test-engineer.md) | Writes and fixes Vitest unit, integration and e2e tests | sonnet | no | general |
 | [qa-engineer](agents/qa-engineer.md) | Runs the app and checks each acceptance criterion pass/fail | sonnet | writes QA report only | general |
 | [debugger](agents/debugger.md) | Reproduces a bug, proves the root cause, fixes it with a regression test | opus | no | general |
+| [red-team](agents/red-team.md) | Adversarial review of code, docs, plans, prompts or agent files: attacks assumptions, proves breaks (local probes allowed) | opus | yes (local probes only) | general |
 | [security-auditor](agents/security-auditor.md) | Security audit (auth, tokens, injection, dependencies) | opus | yes | general |
 | [performance-auditor](agents/performance-auditor.md) | Performance audit (N+1, indexes, blocking work, bundles) | opus | yes | general |
 | [devops-engineer](agents/devops-engineer.md) | CI/CD pipelines, Docker, env config | sonnet | no | general |
@@ -45,6 +46,8 @@ Agent and skill templates live inside the `create-agent` and `create-skill` skil
 | [doc-writer](agents/doc-writer.md) | Keeps docs in sync with the code | sonnet | no | general |
 | [doc-reviewer](agents/doc-reviewer.md) | Reviews the docs doc-writer wrote or changed: accuracy against the code, completeness, writing | opus | yes | general |
 | [doc-auditor](agents/doc-auditor.md) | Whole-repo gap between the built product and its docs, both ways, with a coverage table | opus | yes | general |
+| [researcher](agents/researcher.md) | Answers one question within a scope (site, folder, open web) with cited findings and confidence | sonnet | yes | general |
+| [discussant](agents/discussant.md) | One voice in a group discussion: takes a role and optional persona (existing agent file), posts one structured message per round | sonnet | yes | general |
 | [ts-developer](agents/ts-developer.md) | Builds the jktools package (core, CLI, CI) | sonnet | no | jktools |
 | [ts-reviewer](agents/ts-reviewer.md) | Reviews jktools TypeScript code | opus | yes | jktools |
 | [tool-author](agents/tool-author.md) | Writes jktools provider tool templates | sonnet | no | jktools |
@@ -56,6 +59,7 @@ Full life cycle (run by the `ship-feature` skill): `product-manager` → `projec
 | Skill | What it does | Scope |
 | --- | --- | --- |
 | [ship-feature](skills/ship-feature/SKILL.md) | Orchestrates the full life cycle with the agents above, with gates between stages | general |
+| [group-discussion](skills/group-discussion/SKILL.md) | Research (max 2 agents in parallel) → role-based group chat in N rounds → synthesis, saved in `docs/discussions/<topic>/` | general |
 | [create-agent](skills/create-agent/SKILL.md) | Analyze → create → verify a new subagent, with bundled template and checklist | general |
 | [create-skill](skills/create-skill/SKILL.md) | Analyze → create → verify a new skill folder, with bundled template and checklist | general |
 | [add-tool](skills/add-tool/SKILL.md) | Steps to add one provider tool to jktools (template, fixture, test, registry) | jktools |

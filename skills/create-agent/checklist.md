@@ -25,7 +25,7 @@ The standard every `agent.md` must meet. `create-agent` builds against it and it
 
 ## Body
 - **B1** First line: role and who uses the output, and why quality matters.
-- **B2** Sections: `Context`, `Workflow`, `Rules`, `Done when`, `Report back`. Reviewer variant: `Scope`, `Checklist`, `Verification`, `Report back`.
+- **B2** Sections: `Context`, `Workflow`, `Rules`, `Done when`, `Report back`. Reviewer variant: `Scope`, `Checklist` (or `Method` for adversarial agents), `Verification` (or `Probes`), `Report back`.
 - **B3** Workflow steps are numbered, ordered, each one action.
 - **B4** Every rule is checkable. No "be careful", "as needed", "appropriate".
 - **B5** Safety: no secrets in output or logs; no destructive commands; no production or shared systems; no deploy, push or commit unless the user asks.
